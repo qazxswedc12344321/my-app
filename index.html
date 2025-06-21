@@ -5,6 +5,20 @@
   <title>Hello</title>
 </head>
 <body>
-  <h1>Hello, GitHub!</h1>
+  <h1>前端页面</h1>
+  <button onclick="callAPI()">调用后端</button>
+  <p id="result">等待调用...</p>
+
+  <script>
+    async function callAPI() {
+      try {
+        const res = await fetch("https://my-backend-production-b201.up.railway.app/ping");
+        const text = await res.text();
+        document.getElementById("result").innerText = text;
+      } catch (err) {
+        document.getElementById("result").innerText = "请求失败";
+      }
+    }
+  </script>
 </body>
 </html>
